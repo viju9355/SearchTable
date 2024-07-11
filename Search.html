@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Searchable Table Code</title>
+    <style>
+      table,th,td{
+        border:1px solid red;
+        text-align: center;
+      }
+      #Input{
+        width:100%;
+        background-color: white;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="Input" type="text" placeholder="Enter Name...">
+    <table style="width:100%" id="Table">
+      <tr>
+        <th>Sr.No</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>A</td>
+        <td>20</td>
+        <td>Male</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>B</td>
+        <td>19</td>
+        <td>Male</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>C</td>
+        <td>20</td>
+        <td>Male</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>D</td>
+        <td>19</td>
+        <td>Male</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>E</td>
+        <td>19</td>
+        <td>Male</td>
+      </tr>
+    </table>
+    <script>
+      let Input=document.querySelector("#Input");
+      Input.addEventListener("keyup",()=>{
+        let InputData=document.querySelector("#Input").value.toUpperCase();
+        let Table=document.querySelector("#Table");
+        let Tr=document.querySelectorAll("tr");
+        for(let i=0;i<Tr.length;i++)
+        {
+          let Td=Tr[i].querySelectorAll("td")[1];
+          if(Td)
+          {
+            TextValue=Td.textContent ||
+                      Td.innerHTML;
+            if(TextValue.toUpperCase().indexOf(InputData)> -1)
+            {
+              Tr[i].style.display="";
+            }
+            else
+            {
+              Tr[i].style.display="none";
+            }
+          }
+        }
+        
+      })
+    </script>
+  </body>
+</html>
